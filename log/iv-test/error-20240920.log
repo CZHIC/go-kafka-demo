@@ -17,3 +17,55 @@ Stack:
 8.  github.com/gogf/gf/net/ghttp.(*Server).ServeHTTP
     /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_server_handler.go:134
  
+2024-09-20 20:03:13.503 [ERRO] test.go:29: ["request Content-Type isn't multipart/form-data"] 
+Stack:
+1.  iv-test/app/api.(*apiTest).UploadFile
+    /Users/dalanmao/Desktop/UGit/iv-test/app/api/test.go:29
+2.  github.com/gogf/gf/net/ghttp.(*middleware).Next.func1.(*middleware).callHandlerFunc.6
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_request_middleware.go:130
+3.  github.com/gogf/gf/net/ghttp.niceCallFunc
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_func.go:52
+4.  github.com/gogf/gf/net/ghttp.(*middleware).callHandlerFunc
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_request_middleware.go:128
+5.  github.com/gogf/gf/net/ghttp.(*middleware).Next.func1
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_request_middleware.go:74
+6.  github.com/gogf/gf/util/gutil.TryCatch
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/util/gutil/gutil.go:46
+7.  github.com/gogf/gf/net/ghttp.(*middleware).Next
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_request_middleware.go:48
+8.  github.com/gogf/gf/net/ghttp.(*Server).ServeHTTP
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_server_handler.go:134
+ 
+2024-09-20 20:04:01.545 [ERRO] message.go:33: [Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= 0  and sendTime < ?' at line 1, select * from t_messagewhere ifSend = 0  and sendTime < 1726833841 
+] 
+Stack:
+1.  iv-test/app/model.GetMessageAllList
+    /Users/dalanmao/Desktop/UGit/iv-test/app/model/message.go:33
+2.  iv-test/app/service.GetMessage
+    /Users/dalanmao/Desktop/UGit/iv-test/app/service/test.go:14
+3.  iv-test/app/api.GetMessage
+    /Users/dalanmao/Desktop/UGit/iv-test/app/api/test.go:93
+4.  github.com/gogf/gf/os/gcron.(*Entry).check
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/os/gcron/gcron_entry.go:161
+5.  github.com/gogf/gf/os/gtimer.(*Entry).Run.func1
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/os/gtimer/gtimer_entry.go:57
+ 
+2024-09-20 20:04:12.322 [ERRO] test.go:29: ["request Content-Type isn't multipart/form-data"] 
+Stack:
+1.  iv-test/app/api.(*apiTest).UploadFile
+    /Users/dalanmao/Desktop/UGit/iv-test/app/api/test.go:29
+2.  github.com/gogf/gf/net/ghttp.(*middleware).Next.func1.(*middleware).callHandlerFunc.6
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_request_middleware.go:130
+3.  github.com/gogf/gf/net/ghttp.niceCallFunc
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_func.go:52
+4.  github.com/gogf/gf/net/ghttp.(*middleware).callHandlerFunc
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_request_middleware.go:128
+5.  github.com/gogf/gf/net/ghttp.(*middleware).Next.func1
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_request_middleware.go:74
+6.  github.com/gogf/gf/util/gutil.TryCatch
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/util/gutil/gutil.go:46
+7.  github.com/gogf/gf/net/ghttp.(*middleware).Next
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_request_middleware.go:48
+8.  github.com/gogf/gf/net/ghttp.(*Server).ServeHTTP
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_server_handler.go:134
+ 
