@@ -1,0 +1,19 @@
+2024-09-20 19:12:38.993 [ERRO] test.go:40: ["zip: not a valid zip file"] 
+Stack:
+1.  iv-test/app/api.(*apiTest).UploadFile
+    /Users/dalanmao/Desktop/UGit/iv-test/app/api/test.go:40
+2.  github.com/gogf/gf/net/ghttp.(*middleware).Next.func1.(*middleware).callHandlerFunc.6
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_request_middleware.go:130
+3.  github.com/gogf/gf/net/ghttp.niceCallFunc
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_func.go:52
+4.  github.com/gogf/gf/net/ghttp.(*middleware).callHandlerFunc
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_request_middleware.go:128
+5.  github.com/gogf/gf/net/ghttp.(*middleware).Next.func1
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_request_middleware.go:74
+6.  github.com/gogf/gf/util/gutil.TryCatch
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/util/gutil/gutil.go:46
+7.  github.com/gogf/gf/net/ghttp.(*middleware).Next
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_request_middleware.go:48
+8.  github.com/gogf/gf/net/ghttp.(*Server).ServeHTTP
+    /Users/dalanmao/go/pkg/mod/github.com/gogf/gf@v1.16.9/net/ghttp/ghttp_server_handler.go:134
+ 

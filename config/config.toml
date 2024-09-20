@@ -52,7 +52,9 @@
           link   = "mysql:root:chu651267218@tcp(9.135.221.111:3306)/db_invest_test"
           tables = "t_company_interaction"
           path  =   "./app"
-
+[GCRON] 
+       GetMessage = "1 * * * * *"     # 每分钟执行一次
+      
 
  
 
