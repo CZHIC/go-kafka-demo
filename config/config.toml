@@ -1,0 +1,59 @@
+# HTTP Server.
+[server]
+	address        = ":8081"
+	serverRoot     = "public"
+	serverAgent    = "iv-test"
+	logPath        = "/tmp/log/iv-test/server"
+	routeOverWrite = true
+   MaxHeaderBytes    = "100KB" # 请求头大小限制，请求头包括客户端提交的Cookie数据，默认设置为10KB
+   ClientMaxBodySize = "1000MB" # 客户端提交的Body大小限制，同时也影响文件上传大小，默认设置为8MB
+   readTimeout         = "3600s"                        # 请求读取超时时间，一般不需要配置。默认为60秒
+
+ # Logger configurations.
+    [logger.access]
+        Path        = "./log/iv-test"
+        Level       = "all"
+        Stdout      = true
+        CtxKeys     = ["Trace-Id"]
+        File        = "access-{Ymd}.log"
+    [logger.error]
+        Path        = "./log/iv-test"
+        Level       = "all"
+        Stdout      = true
+        CtxKeys     = ["Trace-Id"]
+        File        = "error-{Ymd}.log"
+
+    # Database configurations.
+    [database]
+       # 数据库日志对象配置
+       [database.logger]
+          Path   = "./log/iv-test/sql"
+          Level  = "all"
+          Stdout = true
+       [database.default]
+          link = "mysql:root:chu651267218@tcp(9.135.221.111:3306)/db_invest_release?loc=Local&parseTime=true"
+          debug = true
+          charset = "utf8"
+    # swagger api页面查看账号密码
+    [swagger]
+       open        = true
+       user        = "admin"
+       pass        = "admin"
+       schemes     = ["http"]
+       version     = "1.0"
+       title       = "IV cron API"
+       description = """
+       IV CRON API 接口文档。
+       """      
+    # GF-CLI工具配置
+    [gfcli]
+      # 自定义DAO生成配置(默认是读取database配置)
+      [[gfcli.gen.dao]]
+          link   = "mysql:root:chu651267218@tcp(9.135.221.111:3306)/db_invest_test"
+          tables = "t_company_interaction"
+          path  =   "./app"
+
+
+ 
+
+         
