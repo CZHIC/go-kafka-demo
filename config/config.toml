@@ -31,7 +31,7 @@
           Level  = "all"
           Stdout = true
        [database.default]
-          link = "mysql:root:chu651267218@tcp(9.135.221.111:3306)/czc_test?loc=Local&parseTime=true"
+          link = "mysql:root:chu651267218@tcp(127.0.0.1:3306)/czc_test?loc=Local&parseTime=true"
           debug = true
           charset = "utf8"
     # swagger api页面查看账号密码
@@ -49,13 +49,13 @@
     [gfcli]
       # 自定义DAO生成配置(默认是读取database配置)
       [[gfcli.gen.dao]]
-          link   = "mysql:root:chu651267218@tcp(9.135.221.111:3306)/czc_test"
+          link   = "mysql:root:chu651267218@tcp(127.0.0.1:3306)/czc_test"
           tables = "t_usre"
           path  =   "./app"
 [GCRON] 
        GetMessage = "1 * * * * *"     # 每分钟执行一次
 [KAFKA] 
-       Host = "21.6.115.13:9092"            
+       Host = "127.0.0.1:9092"            
       
 
  
