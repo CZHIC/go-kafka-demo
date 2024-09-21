@@ -54,6 +54,8 @@
           path  =   "./app"
 [GCRON] 
        GetMessage = "1 * * * * *"     # 每分钟执行一次
+[KAFKA] 
+       Host = "21.6.115.13:9092"            
       
 
  

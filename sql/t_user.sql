@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE `t_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(200) NOT NULL DEFAULT '' COMMENT '用户名',
-  `phone` int(11) NOT NULL DEFAULT '0' COMMENT '手机号',
+  `phone` bigint(20) NOT NULL DEFAULT '0' COMMENT '手机号',
   `email` varchar(100) NOT NULL DEFAULT '' COMMENT '邮箱',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uniq_phone` (`phone`)

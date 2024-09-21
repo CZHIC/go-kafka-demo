@@ -1,7 +1,9 @@
 package kafka
 
 import (
+	"iv-test/library/logger"
 	"log"
+	"sync"
 
 	"github.com/IBM/sarama"
 )
@@ -15,9 +17,7 @@ func (kc *KafkaClient) SendMessage(topic, key, value string) (int32, int64, erro
 		Topic: topic,
 		Key:   sarama.StringEncoder(key),
 		Value: sarama.StringEncoder(value),
-		//Partition: partition, //指定分区
 	}
-
 	p, offset, err := kc.Producer.SendMessage(msg)
 	if err != nil {
 		return 0, 0, err
@@ -27,16 +27,34 @@ func (kc *KafkaClient) SendMessage(topic, key, value string) (int32, int64, erro
 }
 
 // ReceiveMessages 从Kafka接收消息
-func (kc *KafkaClient) ReceiveMessages(topic string, partition int32, handler func(*sarama.ConsumerMessage)) {
+func (kc *KafkaClient) ReceiveMessages(topic string, stopSignal <-chan bool, handler func(*sarama.ConsumerMessage)) {
 	log.Println("进入ReceiveMessages")
-	partitionConsumer, err := kc.Consumer.ConsumePartition(topic, 0, sarama.OffsetOldest)
-	if err != nil {
-		log.Fatalf("Failed to start partition consumer: %s", err)
-	}
-	defer partitionConsumer.Close()
+	var wg sync.WaitGroup
+	for _, partition := range kc.Partitions {
+		wg.Add(1)
+		partitionId := partition.ID
+		go func(partitionId int32) {
+			defer wg.Done()
+			partitionConsumer, err := kc.Consumer.ConsumePartition(topic, partitionId, sarama.OffsetOldest)
+			if err != nil {
+				logger.Error("Failed to start partition consumer:", err.Error())
+				return
+			}
+			defer partitionConsumer.Close()
+			for {
+				select {
+				case msg := <-partitionConsumer.Messages():
+					go handler(msg)
+				case err := <-partitionConsumer.Errors():
+					logger.Error("kafka获取数据报错:", err.Error())
+					return
+				case <-stopSignal:
+					return
+				}
+			}
 
-	for msg := range partitionConsumer.Messages() {
-		//log.Printf("Received message: key=%s, value=%s, offset=%d\n", string(msg.Key), string(msg.Value), msg.Offset)
-		handler(msg)
+		}(partitionId)
+
 	}
+	wg.Wait()
 }

@@ -4,7 +4,6 @@ import (
 	"iv-test/library/logger"
 
 	"github.com/gogf/gf/frame/g"
-	"github.com/gogf/gf/os/gtime"
 	"github.com/gogf/gf/util/gconv"
 )
 
@@ -18,12 +17,11 @@ type TActivty struct {
 	PlainTime int    `orm:"plainTime" json:"plainTime"` // 计划时间
 }
 
-func GetActivtyInfo() (*TActivty, error) {
+func GetActivtyInfo(Id int64) (*TActivty, error) {
 	activtyInfo := (*TActivty)(nil)
 	db := g.DB()
-	nowtime := gtime.Now().Unix()
-	sql := "select * from " + TableActivty + "where id = ? "
-	record, err := db.GetOne(sql, nowtime)
+	sql := "select * from " + TableActivty + " where id = ? "
+	record, err := db.GetOne(sql, Id)
 	if err != nil {
 		logger.Error(err)
 	}

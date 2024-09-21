@@ -6,5 +6,5 @@ type UploadDoc struct {
 	Phone     int64  `json:"phone"`     // 手机号
 	ActivtyId int64  `json:"activtyId"` // 活动ID
 	Template  string `json:"template"`  //自定义模版
-	SeadTime  string `json:"seadTime"`  //发送时间
+	PlainTime string `json:"plainTime"` //计划发送时间
 }

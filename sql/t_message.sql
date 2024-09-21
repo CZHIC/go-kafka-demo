@@ -28,11 +28,11 @@ DROP TABLE IF EXISTS `t_message`;
 CREATE TABLE `t_message` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL DEFAULT '0' COMMENT '用户ID',
-  `phone` int(11) NOT NULL DEFAULT '0' COMMENT '手机号',
+  `phone` bigint(20) NOT NULL DEFAULT '0' COMMENT '手机号',
   `activityId`int(11) NOT NULL default 0 COMMENT '活动ID',
   `message` text COMMENT '消息',
   `plainTime` int(11) NOT NULL DEFAULT '0' COMMENT '计划发送时间',
-  `ifSend` int(3) NOT NULL DEFAULT '0' COMMENT '0:未发送 ， 1:已发送',
+  `ifSend` int(3) NOT NULL DEFAULT '0' COMMENT '0:未发送 ， 1:已发送kafka  2:已消费',
   `sendTime` int(11) NOT NULL DEFAULT '0' COMMENT '发送时间',
   PRIMARY KEY (`id`),
   KEY `index_userId` (`userId`)
